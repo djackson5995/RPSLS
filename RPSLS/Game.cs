@@ -36,7 +36,32 @@ namespace RPSLS
 
         public int ChooseNumberOfHumanPlayers()
         {
-            return 0;
+            int numberOfPlayers;
+            bool validInput = false;
+
+            do
+            {
+                Console.WriteLine("How many human players? (1 or 2)");
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out numberOfPlayers))
+                {
+                    if (numberOfPlayers == 1 || numberOfPlayers == 2)
+                    {
+                        validInput = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter either 1 or 2.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter a number.");
+                }
+            } while (!validInput);
+
+            return numberOfPlayers;
         }
 
         public void CreatePlayerObjects(int numberOfHumanPlayers)
