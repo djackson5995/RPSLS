@@ -41,7 +41,7 @@ namespace RPSLS
 
             do
             {
-                Console.WriteLine("How many human players? (1 or 2)");
+                Console.WriteLine("How many players are playing? (1 or 2)");
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out numberOfPlayers))
@@ -75,12 +75,12 @@ namespace RPSLS
             }
             else if (numberOfHumanPlayers == 2)
             {
-               
+
                 Console.WriteLine("Enter player one's name:");
                 string playerOneName = Console.ReadLine();
                 playerOne = new HumanPlayer(playerOneName);
 
-             
+
                 Console.WriteLine("Enter player two's name:");
                 string playerTwoName = Console.ReadLine();
                 playerTwo = new HumanPlayer(playerTwoName);
@@ -89,7 +89,7 @@ namespace RPSLS
 
         public void CompareGestures()
         {
-            
+
             Console.WriteLine($"{playerOne.name} chose: {playerOne.chosenGesture}");
             Console.WriteLine($"{playerTwo.name} chose: {playerTwo.chosenGesture}");
 
@@ -112,7 +112,7 @@ namespace RPSLS
 
         public void DisplayGameWinner()
         {
-         
+
             if (playerOne.score >= 2)
             {
                 Console.WriteLine($"{playerOne.name} wins the game!");
@@ -130,6 +130,24 @@ namespace RPSLS
         public void RunGame()
         {
             WelcomeMessage();
+            int numberOfHumanPlayers = ChooseNumberOfHumanPlayers();
+            CreatePlayerObjects(numberOfHumanPlayers);
+
+            bool gameEnd = false;
+            while (!gameEnd)
+            {
+                playerOne.ChooseGesture();
+                playerTwo.ChooseGesture();
+
+                CompareGestures();
+                DisplayGameWinner();
+
+
+                if (playerOne.score >= 2 || playerTwo.score >= 2)
+                {
+                    gameEnd = true;
+                }
+            }
         }
     }
 }
