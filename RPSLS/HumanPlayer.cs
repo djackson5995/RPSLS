@@ -19,7 +19,7 @@ namespace RPSLS
             Console.WriteLine($"{name}, choose your gesture:");
             foreach (string gesture in gestures)
             {
-                Console.WriteLine($"- {gesture}");
+                Console.WriteLine($"{gesture}");
             }
 
             string input;

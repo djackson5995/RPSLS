@@ -8,12 +8,12 @@ namespace RPSLS
 {
     internal class ComputerPlayer : Player
     {
-        // Constructor
+      
         public ComputerPlayer(string name) : base(name)
         {
         }
 
-        // Override ChooseGesture method
+       
         public override void ChooseGesture()
         {
             Random random = new Random();

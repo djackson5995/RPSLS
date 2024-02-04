@@ -89,12 +89,42 @@ namespace RPSLS
 
         public void CompareGestures()
         {
+            
+            Console.WriteLine($"{playerOne.name} chose: {playerOne.chosenGesture}");
+            Console.WriteLine($"{playerTwo.name} chose: {playerTwo.chosenGesture}");
 
+            int result = (playerOne.chosenGesture.CompareTo(playerTwo.chosenGesture) + 5) % 5;
+            if (result == 1 || result == 3)
+            {
+                Console.WriteLine($"{playerOne.name} wins the round!");
+                playerOne.score++;
+            }
+            else if (result == 2 || result == 4)
+            {
+                Console.WriteLine($"{playerTwo.name} wins the round!");
+                playerTwo.score++;
+            }
+            else
+            {
+                Console.WriteLine("It's a tie!");
+            }
         }
 
         public void DisplayGameWinner()
         {
-
+         
+            if (playerOne.score >= 2)
+            {
+                Console.WriteLine($"{playerOne.name} wins the game!");
+            }
+            else if (playerTwo.score >= 2)
+            {
+                Console.WriteLine($"{playerTwo.name} wins the game!");
+            }
+            else
+            {
+                Console.WriteLine("No winner yet. Keep playing!");
+            }
         }
 
         public void RunGame()
